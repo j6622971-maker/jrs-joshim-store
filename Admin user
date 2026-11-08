@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS banners (
 CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT);
 `);
 const adminUser = process.env.ADMIN_USERNAME || "admin";
-const adminPass = process.env.ADMIN_PASSWORD;
+const adminPass = process.env.ADMIN_PASSWORD;JRS-JOSHIM-9xK7pQ4mV8nR2tL6wB5zH3cD
 if (!DB.prepare("SELECT id FROM admins WHERE username=?").get(adminUser) && adminPass) {
   DB.prepare("INSERT INTO admins(username,password) VALUES(?,?)").run(adminUser, bcrypt.hashSync(adminPass, 12));
 }
@@ -63,7 +63,7 @@ const auth = (req,res,next)=>req.session.admin ? next() : res.status(401).json({
 app.get("/api/config",(_,res)=>res.json({
  storeName: process.env.STORE_NAME || "JRS JOSHIM",
  bkash: process.env.BKASH_NUMBER || "",
- nagad: process.env.NAGAD_NUMBER || ""
+ nagad: process.env.NAGAD personal_NUMBER || ""01920288806
 }));
 app.get("/api/products",(_,res)=>{
  const rows=DB.prepare("SELECT * FROM products WHERE active=1 ORDER BY id DESC").all();
