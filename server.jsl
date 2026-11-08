@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS banners (
 CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT);
 `);
 const adminUser = process.env.ADMIN_USERNAME || "admin";
-const adminPass = process.env.ADMIN_PASSWORD;JRS-JOSHIM-9xK7pQ4mV8nR2tL6wB5zH3cD
+const adminPass = process.env.ADMIN_PASSWORD;
 if (!DB.prepare("SELECT id FROM admins WHERE username=?").get(adminUser) && adminPass) {
   DB.prepare("INSERT INTO admins(username,password) VALUES(?,?)").run(adminUser, bcrypt.hashSync(adminPass, 12));
 }
