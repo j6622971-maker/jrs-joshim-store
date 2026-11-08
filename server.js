@@ -10,7 +10,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
-
+app.set("trust proxy", 1);
 const app = express();
 const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV === "production" && (!process.env.SESSION_SECRET || !process.env.ADMIN_PASSWORD)) {
@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS banners (
  image TEXT DEFAULT '', active INTEGER DEFAULT 1
 );
 CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT);
-`);
-const adminUser = process.env.ADMIN_USERNAME || "admin";
-const adminPass = process.env.ADMIN_PASSWORD;
+`);JRS-JOSHIM-9xK7pQ4mV8nR2tL6wB5zH3cD
+const adminUser = process.env.ADMIN_USERNAME || "Joshim0077";
+const adminPass = process.env.ADMIN_PASSWORD;JRS-JOSHIM-9xK7pQ4mV8nR2tL6wB5zH3cD
 if (!DB.prepare("SELECT id FROM admins WHERE username=?").get(adminUser) && adminPass) {
   DB.prepare("INSERT INTO admins(username,password) VALUES(?,?)").run(adminUser, bcrypt.hashSync(adminPass, 12));
 }
