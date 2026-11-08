@@ -63,7 +63,7 @@ const auth = (req,res,next)=>req.session.admin ? next() : res.status(401).json({
 app.get("/api/config",(_,res)=>res.json({
  storeName: process.env.STORE_NAME || "JRS JOSHIM",
  bkash: process.env.BKASH_NUMBER || "",
- nagad: process.env.NAGAD personal_NUMBER || ""01920288806
+ nagad: process.env.NAGAD_NUMBER ||
 }));
 app.get("/api/products",(_,res)=>{
  const rows=DB.prepare("SELECT * FROM products WHERE active=1 ORDER BY id DESC").all();
