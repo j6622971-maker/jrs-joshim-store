@@ -1,0 +1,6 @@
+.env
+node_modules/
+store.db
+sessions.sqlite
+public/uploads/*
+!public/uploads/.gitkeep
